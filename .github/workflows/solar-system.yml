@@ -98,4 +98,4 @@ jobs:
             with:
               context: .
               push: false
-              tags: ${{vars.DOCKER_USERNAME}}/SolarSystem:${{github.sha}}
+              tags: ${{vars.DOCKER_USERNAME}}/solarsystem:${{github.sha}}
