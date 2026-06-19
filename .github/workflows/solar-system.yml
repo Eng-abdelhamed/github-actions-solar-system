@@ -25,7 +25,7 @@ jobs:
           MONGO_URI: "mongodb://localhost:27017/superData"
           MONGO_USERNAME: non-prod-user
           MONGO_PASSWORD: non-prod-password
-          
+
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -58,14 +58,25 @@ jobs:
     code-coverage:
         name: code coverage
         runs-on: ubuntu-latest
+        container:
+            image: node:20
+        services:
+            image: siddharth67/mongo-db:non-prod
+            options: 
+              --name mongo
+        env:
+          MONGO_URI: "mongodb://mongo:27017/superData"
+          MONGO_USERNAME: non-prod-user
+          MONGO_PASSWORD: non-prod-password
+
         steps:
           - name: Checkout The Repository
             uses: actions/checkout@v4
 
-          - name: Setup NodeJS
-            uses: actions/setup-node@v4
-            with:
-              node-version: 20
+          # - name: Setup NodeJS
+          #   uses: actions/setup-node@v4
+          #   with:
+          #     node-version: 20
 
           - name: Caching NPM Dependency
             uses: actions/cache@v5
