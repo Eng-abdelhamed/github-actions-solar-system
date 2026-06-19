@@ -80,8 +80,7 @@ jobs:
     
 
     docker:
-      containerization:
-        need: [unit-testing,Codecoverage]
+        needs: [unit-testing,Codecoverage]
         runs-on: ubuntu-latest
         steps:
           - name: CheckOutRepo 
@@ -90,5 +89,6 @@ jobs:
           - name: DockerHub Logging
             uses: docker/login-action@v4
             with:
-              username: ${{vars.DOCKER_USERNAME}}
+              username: ${{vars.DOCKER_}}
               password: ${{secrets.DOCKER_PASSWORD}}
+    
