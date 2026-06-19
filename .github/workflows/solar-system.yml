@@ -16,6 +16,16 @@ jobs:
     unit-testing:
         name: Unit Testing
         runs-on: ubuntu-latest
+        services:
+          mongo-db:
+            image: siddharth67/mongo-db:non-prod
+            ports:
+              - 27017:27017
+        env:
+          MONGO_URI: "mongodb://localhost:27017/superData"
+          MONGO_USERNAME: non-prod-user
+          MONGO_PASSWORD: non-prod-password
+          
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -111,3 +121,5 @@ jobs:
               tags: |
                 ${{vars.DOCKER_USERNAME}}/solarsystem:${{github.sha}}
                 ghcr.io/eng-abdelhamed/solarsystem:${{github.sha}}
+
+          
