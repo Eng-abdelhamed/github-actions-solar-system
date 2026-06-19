@@ -80,6 +80,7 @@ jobs:
     
 
     docker:
+        name: Docker Logining
         needs: [unit-testing, code-coverage]
         runs-on: ubuntu-latest
         steps:
@@ -91,4 +92,10 @@ jobs:
             with:
               username: ${{vars.DOCKER_USERNAME}}
               password: ${{secrets.DOCKER_PASSWORD}}
-    
+        
+          - name: Dokcer Build For Testing
+            uses: docker/build-push-action@v7
+            with:
+              context: .
+              push: false
+              tags: ${{vars.DOCKER_USERNAME}}/SolarSystem:${{github.sha}}
