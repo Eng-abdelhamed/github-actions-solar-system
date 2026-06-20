@@ -142,6 +142,11 @@ jobs:
 
         - name: Install Kubectl
           uses: azure/setup-kubectl@v4
+        - uses: azure/k8s-set-context@v5
+          with:
+           method: kubeconfig
+           kubeconfig:  ${{ secrets.KUBECONFIG }}
 
+           
         - name: Fetch Data
           run: kubectl get nodes
