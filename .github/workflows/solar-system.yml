@@ -169,7 +169,7 @@ jobs:
           env:
            NAMESPACE: ${{vars.NAMESPACE}}
            REPLICAS: ${{vars.REPLICAS}}
-           IMAGE: ${{var.DOCKER_USERNAME}}/solarsystem:${{github.sha}}
+           IMAGE: ${{vars.DOCKER_USERNAME}}/solarsystem:${{github.sha}}
            INGRESS_IP: ${{vars.INGRESS_IP}}
 
         - name: Check Files
