@@ -128,9 +128,14 @@ jobs:
             sudo mv cobertura-coverage.xml  reports-${{github.sha}}/
             ls -ltra reports-${{github.sha}}/
           
-        - name: Upload To AWS
-          run:
-            aws s3 cp reports-${{github.sha}} s3://apolloos3back/Productions --recursive
+        - uses: osiegmar/s3-publisher-action@v3
+          with:
+            bucket: apolloos3back
+            dir: reports-${{github.sha}}
+          env:
+            AWS_REGION: eu-east-1
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PASSWORD }}
 
     docker: 
       name: Containerization
