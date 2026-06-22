@@ -29,7 +29,7 @@ jobs:
     
     deploy:
       runs-on: ubuntu-latest
-      needs: docker
+      
       environment:
         # Name of The environment in Github
         name: development
