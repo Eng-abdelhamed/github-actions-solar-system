@@ -106,7 +106,6 @@ jobs:
   
     docker: 
         needs: [unit-testing,code-coverage]
-        runs-on: ubuntu-latest
         uses: ./.github/workflows/Reusable.yaml
         # GitHub Registery Tokens Need Permission 
         

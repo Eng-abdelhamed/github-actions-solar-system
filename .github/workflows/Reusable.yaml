@@ -6,6 +6,7 @@ on:
 jobs:
     deployDockerResue:
       name: Containerization
+      runs-on: ubuntu-latest
       permissions:
           contents: read
           packages: write
