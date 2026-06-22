@@ -106,7 +106,7 @@ jobs:
   
     ReportingJop:
       name: Report Accomplishment
-      need: [unit-testing,code-coverage]
+      needs: [unit-testing,code-coverage]
       runs-on: ubuntu-latest
       continue-on-error: true
       steps: 
