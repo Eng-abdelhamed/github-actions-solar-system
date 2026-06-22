@@ -126,8 +126,8 @@ jobs:
 
 
     docker: 
-      needs: [unit-testing,code-coverage]
       name: Containerization
+      needs: [unit-testing,code-coverage]
       runs-on: ubuntu-latest
       permissions:
           contents: read
