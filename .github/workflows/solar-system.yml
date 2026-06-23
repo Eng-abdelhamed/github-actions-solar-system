@@ -37,15 +37,9 @@ jobs:
           with:
             node-version: 20
   
-        - name: Caching NPM Dependency
-          uses: actions/cache@v5
-          with:
-            path: node_modules
-            key: ${{runner.os}}-node_modules-${{hashFiles('package-lock.json')}} # Key must be unqiue
-          
-        - name: Install Dependencies
-          run: npm install
-    
+        - name: Caching NPM and Install Dependecies
+          uses: ./.github/workflows/custome-Actions/NPM-Actions/Actions.yaml
+
         - name: Unit Testing
           run: npm test
           
@@ -84,15 +78,9 @@ jobs:
           #   with:
           #     node-version: 20
 
-          - name: Caching NPM Dependency
-            uses: actions/cache@v5
-            with:
-              path: node_modules
-              key: ${{runner.os}}-node_modules-${{hashFiles('package-lock.json')}}
-          
-          - name: install dependency
-            run: npm install
-          
+          - name: Caching NPM and Install Dependecies
+           uses: ./.github/workflows/custome-Actions/NPM-Actions/Actions.yaml
+        
           - name: Codecoverage
             continue-on-error: true
             run:  npm run coverage
