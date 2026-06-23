@@ -39,6 +39,8 @@ jobs:
   
         - name: Caching NPM and Install Dependecies
           uses: ./.github/workflows/custome-Actions/NPM-Actions/Actions.yaml
+          with:
+            path-action: node_modules
 
         - name: Unit Testing
           run: npm test
@@ -80,6 +82,8 @@ jobs:
 
           - name: Caching NPM and Install Dependecies
             uses: ./.github/workflows/custome-Actions/NPM-Actions/Actions.yaml
+            with:
+              path-action: node_modules
         
           - name: Codecoverage
             continue-on-error: true
