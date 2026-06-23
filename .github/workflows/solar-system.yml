@@ -38,7 +38,7 @@ jobs:
             node-version: 20
   
         - name: Caching NPM and Install Dependecies
-          uses: ./.github/custom-actions/npm-actions/action.yaml
+          uses: ./.github/custom-actions/npm-actions
           with:
             path-action: node_modules
 
@@ -58,17 +58,17 @@ jobs:
         # Container Service ==> SideCar Container
         # Jop container     ==> Run all the Steps inside the Container  
         # jop container
-        container:
-            image: node:20
-        # Service Container
-        services:
-          mongo-db:
-            image: siddharth67/mongo-db:non-prod
-            options: --name mongo
-        env:
-          MONGO_URI: "mongodb://mongo:27017/superData"
-          MONGO_USERNAME: non-prod-user
-          MONGO_PASSWORD: non-prod-password
+        # container:
+        #     image: node:20
+        # # Service Container
+        # services:
+        #   mongo-db:
+        #     image: siddharth67/mongo-db:non-prod
+        #     options: --name mongo
+        # env:
+        #   MONGO_URI: "mongodb://mongo:27017/superData"
+        #   MONGO_USERNAME: non-prod-user
+        #   MONGO_PASSWORD: non-prod-password
 
         steps:
           - name: Checkout The Repository
@@ -81,7 +81,7 @@ jobs:
           #     node-version: 20
 
           - name: Caching NPM and Install Dependecies
-            uses: ./.github/custom-actions/npm-actions/action.yaml
+            uses: ./.github/custom-actions/npm-actions
             with:
               path-action: node_modules
         
