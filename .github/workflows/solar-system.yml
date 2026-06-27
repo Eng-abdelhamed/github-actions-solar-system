@@ -213,9 +213,9 @@ jobs:
 
         - name: Create The Secret Ref
           env:
-          MONGO_URI: ${{ env.MONGO_URI }}
-          MONGO_USERNAME: ${{ env.MONGO_USERNAME }}
-          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+           MONGO_URI: ${{ env.MONGO_URI }}
+           MONGO_USERNAME: ${{ env.MONGO_USERNAME }}
+           MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
           run:  |
            kubectl -n development create secret generic mongo-db-creds \
              --from-literal=MONGO_URI="$MONGO_URI" \
