@@ -131,7 +131,7 @@ jobs:
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PASSWORD }}
 
     docker: 
-       name: Containerization
+      name: Containerization
       needs: [unit-testing,code-coverage]
       runs-on: ubuntu-latest
       permissions:
